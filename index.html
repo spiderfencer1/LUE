@@ -1,63 +1,20 @@
 <!doctype html>
 <html>
   <body>
-    <div id="container">
-      <textarea class="input html" placeholder="Enter HTML here."></textarea>
-      <textarea class="input css" placeholder="Enter CSS here."></textarea>
-      <textarea class="input js" placeholder="Enter JS here."></textarea>
-    </div>
-    <iframe id="update">
-      <!doctype html>
-      <html>
-        <head>
-        </head>
-        <body>
-        </body>
-      </html>
-    </iframe>
+    <textarea id="term">
+    </textarea>
     <style type="text/css">
-      *{
+      body{
         margin:0;
         padding:0;
         overflow:hidden;
       }
-      html,body{
-        width:100%;
-        height:100%;
-      }
-      #container{
-        width:100%;
-        height:40%;
-        display:table;
-      }
-      .input{
-        width:33.33%;
-        height:100%;
-      }
-      iframe{
-        width:100%;
-        height:60%;
+      #term{
+        width:98%;
+        height:98%;
+        border:solid 1% white;
+        background-color:black;
       }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-      $(() => {
-        function fetchHtml() { return $('.html').val(); }
-        function fetchCss() { return $('.css').val(); }
-        function fetchJs() { return $('.js').val(); }
-        $('.input').on('keyup',() => {
-          const tg = $('#live_update')[0].contentWindow.document;
-          tg.open();
-          tg.close();
-          const html = fetchHtml();
-          const css = fetchCss();
-          const js = fetchJs();
-          console.log(html,css,js);
-          $("body", target).append(html);
-          $("head", target).append("<style>" + css + "</style>");
-          $("body", target).append("<script>" + js + "<\/script>");
-        });
-      });
-    </script>
   </body>
 </html>
