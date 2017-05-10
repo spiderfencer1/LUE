@@ -6,7 +6,7 @@
       <textarea class="input css" placeholder="Enter CSS here."></textarea>
       <textarea class="input js" placeholder="Enter JS here."></textarea>
     </div>
-    <iframe>
+    <iframe id="update">
       <!doctype html>
       <html>
         <head>
@@ -39,5 +39,24 @@
         height:60%;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(() => {
+        function fetchHtml() { return $('.html').val(); }
+        function fetchCss() { return $('.css').val(); }
+        function fetchJs() { return $('.js').val(); }
+        $('.input').on('keyup',() => {
+          const tg = $('#live_update')[0].contentWindow.document;
+          tg.open();
+          tg.close();
+          const html = fetchHtml();
+          const css = fetchCss();
+          const js = fetchJs();
+          $("body", target).append(html);
+          $("head", target).append("<style>" + css + "</style>");
+          $("body", target).append("<script>" + js + "<\/script>");
+        });
+      });
+    </script>
   </body>
 </html>
