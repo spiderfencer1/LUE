@@ -52,6 +52,7 @@
           const html = fetchHtml();
           const css = fetchCss();
           const js = fetchJs();
+          console.log(html,css,js);
           $("body", target).append(html);
           $("head", target).append("<style>" + css + "</style>");
           $("body", target).append("<script>" + js + "<\/script>");
